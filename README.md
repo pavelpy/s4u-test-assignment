@@ -22,10 +22,10 @@ Clients will be able to define scheduled payments that will transfer a fixed amo
 
 Your implementation needs to provide the necessary storage schema (models), a method to check which scheduled payments are due and a method to create the transaction for a payment that is due.
 
-## [ ] Fix erratic `Transfer.do_transfer()` behavior
+## [x] Fix erratic `Transfer.do_transfer()` behavior
 The `Transfer.do_transfer()` method is implemented naively and will cause problems when several operations are performed on a single account concurrently. For example, the sum of funds transferred from an account could be greater than its balance should allow. Identify what the problem is and fix it.
 
-## [ ] Fix `Transfer.do_transfer()` accepting negative amounts
+## [x] Fix `Transfer.do_transfer()` accepting negative amounts
 Update the Transfer.do_transfer() method to only accept values >0, Write a test that checks that only positive values are accepted and an exception is raised otherwise.
 
 ## [ ] Account / transfer schema evolution

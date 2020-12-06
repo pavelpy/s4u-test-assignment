@@ -5,6 +5,8 @@ from django.test import TestCase
 from account.models import Account
 from customer.models import Customer
 from transfer.models import Transfer
+from transfer.models import InsufficientBalance
+from transfer.models import InvalidAmount
 
 
 class TransferTest(TestCase):
@@ -32,3 +34,13 @@ class TransferTest(TestCase):
             to_account=self.account2,
             amount=100,
         ).exists())
+
+    def test__do_transfer__insufficient_balance__exception(self):
+        with self.assertRaises(InsufficientBalance):
+            Transfer.do_transfer(self.account1, self.account2, Decimal(1000.1))
+
+    def test__do_transfer__less_or_equal_zero_amount__exception(self):
+        with self.assertRaises(InvalidAmount):
+            Transfer.do_transfer(self.account1, self.account2, Decimal(0))
+        with self.assertRaises(InvalidAmount):
+            Transfer.do_transfer(self.account1, self.account2, Decimal(-0.0001))
