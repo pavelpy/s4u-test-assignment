@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "nanobank"
+name = "pavelpy"
 version = "0.1.0"
 description = "Grossly oversimplified, bug ridden banking system"
 authors = ["Forex4you IT"]
