@@ -3,7 +3,11 @@ from django.db import models
 from account.models import Account
 
 
-class InsufficientBalance(Exception):
+class TransferBaseException(Exception):
+    pass
+
+
+class InsufficientBalance(TransferBaseException):
     pass
 
 
